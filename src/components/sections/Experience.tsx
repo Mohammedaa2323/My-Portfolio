@@ -1,11 +1,23 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { GlassCard } from '@/components/ui/GlassCard';
+import { BorderGlowCard } from '@/components/ui/BorderGlowCard';
 import { experience } from '@/data/experience';
 import { fadeUp, viewportOnce } from '@/lib/motion';
 import { cn } from '@/lib/utils';
 
 export function Experience() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ['start 0.8', 'end 0.3'],
+  });
+  const lineScale = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   return (
     <section id="experience" className="section-container py-24 md:py-32">
       <SectionHeading
@@ -14,8 +26,13 @@ export function Experience() {
         description="A track record of shipping products that matter, across teams and industries."
       />
 
-      <div className="relative mt-16">
-        <div className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-[var(--color-accent)] via-[var(--color-border-strong)] to-transparent md:left-1/2 md:-translate-x-1/2" />
+      <div ref={timelineRef} className="relative mt-16">
+        <div className="absolute left-4 top-0 h-full w-px bg-[var(--color-border-strong)]/40 md:left-1/2 md:-translate-x-1/2" />
+        <motion.div
+          aria-hidden="true"
+          style={{ scaleY: lineScale }}
+          className="absolute left-4 top-0 h-full w-px origin-top bg-gradient-to-b from-[var(--color-accent)] via-[var(--color-accent-3)] to-[var(--color-accent-2)] md:left-1/2 md:-translate-x-1/2"
+        />
 
         <div className="flex flex-col gap-10">
           {experience.map((item, index) => (
@@ -37,7 +54,7 @@ export function Experience() {
                 )}
               />
 
-              <GlassCard>
+              <BorderGlowCard>
                 <div className={cn('flex flex-col gap-1', index % 2 === 0 && 'md:items-end')}>
                   <span className="text-xs font-medium uppercase tracking-widest text-[var(--color-accent-3)]">
                     {item.period}
@@ -58,7 +75,7 @@ export function Experience() {
                     </li>
                   ))}
                 </ul>
-              </GlassCard>
+              </BorderGlowCard>
             </motion.div>
           ))}
         </div>

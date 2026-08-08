@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     title: 'LIVO — AI-Powered Smart Agriculture Platform',
     description:
-      'A cloud-native platform helping farmers cut cultivation costs and boost crop yield with AI chat, GDD & fertigation recommendations, disease diagnosis, and real-time weather alerts.',
+      'A cloud-based mobile platform helping farmers reduce cultivation costs and increase crop yield through AI-powered chat, GDD & fertigation recommendations, disease diagnosis, and real-time weather alerts.',
     image: '/projects/livo.jpg',
     tags: ['Django', 'FastAPI', 'Flutter', 'AWS', 'PostgreSQL', 'Redis'],
     liveUrl: 'https://play.google.com/store/apps/details?id=com.revin.livo',
@@ -13,7 +13,7 @@ export const projects: Project[] = [
   {
     title: 'Revin Log — Fertilizer Calculator & Inventory',
     description:
-      'A GDD-powered fertilizer calculator with integrated inventory management and expense-income tracking for farmers and agronomists.',
+      'An IoT-enabled mobile agriculture application featuring a GDD-powered fertilizer calculator, integrated inventory management, and expense and income tracking to help farmers and agronomists optimize crop management and farm operations.',
     image: '/projects/revin-log.jpg',
     tags: ['Django', 'Flutter', 'MySQL', 'MongoDB'],
     liveUrl: 'https://play.google.com/store/apps/details?id=com.revin.log',

@@ -1,26 +1,40 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { GlassCard } from '@/components/ui/GlassCard';
+import { TiltCard } from '@/components/ui/TiltCard';
 import { skillCategories } from '@/data/skills';
 import { fadeUp, staggerContainer, viewportOnce } from '@/lib/motion';
 
-function SkillBar({ name, level }: { name: string; level: number }) {
+function SkillBar({ name, level, isHovered }: { name: string; level: number; isHovered: boolean }) {
   return (
     <div>
       <div className="mb-2 flex items-center justify-between text-sm">
         <span className="text-[var(--color-text)]">{name}</span>
-        <span className="text-[var(--color-text-dim)]">{level}%</span>
+        <span className="text-[var(--color-text-dim)]">{isHovered ? level : 0}%</span>
       </div>
       <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/5">
         <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${level}%` }}
-          viewport={viewportOnce}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+          animate={{ width: isHovered ? `${level}%` : '0%' }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="h-full rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)]"
         />
       </div>
     </div>
+  );
+}
+
+function SkillCategoryCard({ category }: { category: (typeof skillCategories)[number] }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <TiltCard className="h-full" onHoverChange={setIsHovered}>
+      <h3 className="mb-6 text-lg font-semibold text-[var(--color-text)]">{category.category}</h3>
+      <div className="flex flex-col gap-5">
+        {category.skills.map((skill) => (
+          <SkillBar key={skill.name} name={skill.name} level={skill.level} isHovered={isHovered} />
+        ))}
+      </div>
+    </TiltCard>
   );
 }
 
@@ -42,16 +56,7 @@ export function Skills() {
       >
         {skillCategories.map((category) => (
           <motion.div key={category.category} variants={fadeUp}>
-            <GlassCard className="h-full">
-              <h3 className="mb-6 text-lg font-semibold text-[var(--color-text)]">
-                {category.category}
-              </h3>
-              <div className="flex flex-col gap-5">
-                {category.skills.map((skill) => (
-                  <SkillBar key={skill.name} name={skill.name} level={skill.level} />
-                ))}
-              </div>
-            </GlassCard>
+            <SkillCategoryCard category={category} />
           </motion.div>
         ))}
       </motion.div>

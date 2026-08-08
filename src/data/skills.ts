@@ -24,7 +24,7 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: 'Microservices & REST APIs', level: 90 },
       { name: 'CI/CD (GitHub Actions)', level: 80 },
-      { name: 'Flutter', level: 75 },
+      { name: 'Flutter', level: 10 },
       { name: 'Nginx / Linux', level: 78 },
     ],
   },

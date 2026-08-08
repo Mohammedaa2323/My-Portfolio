@@ -29,9 +29,22 @@ export function Navbar() {
             e.preventDefault();
             handleNavClick('#home');
           }}
-          className="text-sm font-semibold tracking-tight text-[var(--color-text)]"
+          className="text-sm font-semibold tracking-tight"
         >
-          {site.name}
+          <motion.span
+            animate={{ backgroundPosition: ['0% 50%', '200% 50%'] }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
+            style={{
+              backgroundImage:
+                'linear-gradient(90deg, var(--color-accent), var(--color-accent-2), var(--color-accent-3), var(--color-accent))',
+              backgroundSize: '300% 100%',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+            }}
+          >
+            {site.name}
+          </motion.span>
           <span className="text-gradient">.</span>
         </a>
 

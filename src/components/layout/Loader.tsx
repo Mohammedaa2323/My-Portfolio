@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { site } from '@/data/site';
+import { staggerContainer, wordUp } from '@/lib/motion';
 
 export function Loader({ isLoading }: { isLoading: boolean }) {
   return (
@@ -12,12 +13,17 @@ export function Loader({ isLoading }: { isLoading: boolean }) {
         >
           <div className="flex flex-col items-center gap-6">
             <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-2xl font-semibold tracking-tight text-gradient"
+              variants={staggerContainer(0.1)}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-wrap items-center justify-center gap-x-2 text-2xl font-semibold tracking-tight sm:text-3xl"
             >
-              {site.name}
+              <motion.span variants={wordUp} className="text-[var(--color-text-muted)]">
+                Hey, I&apos;m
+              </motion.span>
+              <motion.span variants={wordUp} className="text-gradient">
+                {site.name}
+              </motion.span>
             </motion.div>
 
             <div className="relative h-[2px] w-40 overflow-hidden rounded-full bg-white/10">
