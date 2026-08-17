@@ -88,7 +88,7 @@ export function About() {
           <div className="grid gap-4 sm:grid-cols-2">
             {certifications.map((cert) => (
               <div key={cert.title} className="flex items-start gap-3">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/5 text-[var(--color-accent-3)]">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--color-fill)] text-[var(--color-accent-3)]">
                   <Award size={16} />
                 </div>
                 <div>

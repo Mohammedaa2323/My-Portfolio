@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 import { site, navLinks } from '@/data/site';
 import { SocialLinks } from '@/components/ui/SocialLinks';
+import profileImage from '@/assets/images/profile.png';
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -9,6 +10,12 @@ export function Footer() {
   return (
     <footer className="section-container relative py-12">
       <div className="glass-strong flex flex-col items-center gap-8 rounded-3xl p-8 md:p-10">
+        <img
+          src={profileImage}
+          alt={site.name}
+          className="h-20 w-20 rounded-full border border-[var(--color-border-strong)] object-cover shadow-lg md:h-24 md:w-24"
+        />
+
         <div className="text-xl font-semibold tracking-tight text-[var(--color-text)]">
           {site.name}
           <span className="text-gradient">.</span>

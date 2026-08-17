@@ -26,7 +26,7 @@ export function Loader({ isLoading }: { isLoading: boolean }) {
               </motion.span>
             </motion.div>
 
-            <div className="relative h-[2px] w-40 overflow-hidden rounded-full bg-white/10">
+            <div className="relative h-[2px] w-40 overflow-hidden rounded-full bg-[var(--color-fill-strong)]">
               <motion.div
                 className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)]"
                 initial={{ width: '0%' }}

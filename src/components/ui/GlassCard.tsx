@@ -10,7 +10,7 @@ interface GlassCardProps extends HTMLMotionProps<'div'> {
 export function GlassCard({ children, hover = true, className, ...props }: GlassCardProps) {
   return (
     <motion.div
-      whileHover={hover ? { y: -6, borderColor: 'rgba(255,255,255,0.2)' } : undefined}
+      whileHover={hover ? { y: -6, borderColor: 'var(--color-border-hover)' } : undefined}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}
       className={cn(
         'glass rounded-2xl p-6 transition-shadow duration-300',

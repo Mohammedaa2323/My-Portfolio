@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { navLinks, site } from '@/data/site';
 import { useActiveSection } from '@/hooks/useActiveSection';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { cn } from '@/lib/utils';
 
 export function Navbar() {
@@ -63,7 +64,7 @@ export function Navbar() {
                   {isActive && (
                     <motion.span
                       layoutId="nav-active"
-                      className="absolute inset-0 rounded-full bg-white/10"
+                      className="absolute inset-0 rounded-full bg-[var(--color-fill-strong)]"
                       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                     />
                   )}
@@ -74,20 +75,24 @@ export function Navbar() {
           })}
         </ul>
 
-        <button
-          onClick={() => handleNavClick('#contact')}
-          className="hidden xl:inline-flex rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-2)] px-5 py-2 text-sm font-medium text-white shadow-lg shadow-[var(--color-accent)]/20 transition-shadow hover:shadow-[var(--color-accent)]/40 cursor-pointer"
-        >
-          Let's Talk
-        </button>
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
 
-        <button
-          onClick={() => setIsOpen((v) => !v)}
-          className="xl:hidden text-[var(--color-text)] cursor-pointer"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+          <button
+            onClick={() => handleNavClick('#contact')}
+            className="hidden xl:inline-flex rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-2)] px-5 py-2 text-sm font-medium text-white shadow-lg shadow-[var(--color-accent)]/20 transition-shadow hover:shadow-[var(--color-accent)]/40 cursor-pointer"
+          >
+            Let's Talk
+          </button>
+
+          <button
+            onClick={() => setIsOpen((v) => !v)}
+            className="xl:hidden text-[var(--color-text)] cursor-pointer"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -103,7 +108,7 @@ export function Navbar() {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="rounded-xl px-4 py-3 text-left text-sm font-medium text-[var(--color-text-muted)] hover:bg-white/5 hover:text-[var(--color-text)] cursor-pointer"
+                className="rounded-xl px-4 py-3 text-left text-sm font-medium text-[var(--color-text-muted)] hover:bg-[var(--color-fill)] hover:text-[var(--color-text)] cursor-pointer"
               >
                 {link.label}
               </button>

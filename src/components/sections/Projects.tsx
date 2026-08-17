@@ -26,7 +26,7 @@ function TagPill({ tag }: { tag: string }) {
         rotate: [0, -3, 3, 0],
         transition: { rotate: { duration: 0.4, ease: 'easeInOut' }, y: { type: 'spring', stiffness: 400, damping: 12 } },
       }}
-      className="group/pill relative inline-flex items-center overflow-hidden rounded-full border border-[var(--color-border)] bg-white/5 px-3 py-1 text-xs font-medium"
+      className="group/pill relative inline-flex items-center overflow-hidden rounded-full border border-[var(--color-border)] bg-[var(--color-fill)] px-3 py-1 text-xs font-medium"
     >
       <span className="absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-3)] transition-transform duration-300 ease-out group-hover/pill:scale-x-100" />
       <span className="relative z-10 text-[var(--color-text-muted)] transition-colors duration-300 group-hover/pill:text-white">

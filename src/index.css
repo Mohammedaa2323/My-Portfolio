@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Core dark palette */
+  /* Core dark palette (default) */
   --color-bg: #05050a;
   --color-bg-secondary: #0a0a14;
   --color-surface: #0f0f1a;
@@ -17,6 +17,18 @@
 
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-strong: rgba(255, 255, 255, 0.14);
+  --color-border-hover: rgba(255, 255, 255, 0.2);
+
+  /* Subtle fills used for pills, tracks, icon badges */
+  --color-fill: rgba(255, 255, 255, 0.05);
+  --color-fill-strong: rgba(255, 255, 255, 0.1);
+
+  /* Glassmorphism surfaces */
+  --color-glass: rgba(255, 255, 255, 0.03);
+  --color-glass-strong: rgba(255, 255, 255, 0.06);
+
+  --color-grid-line: rgba(255, 255, 255, 0.04);
+  --color-shine: rgba(255, 255, 255, 0.14);
 
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-display: 'Clash Display', 'Inter', system-ui, sans-serif;
@@ -45,6 +57,38 @@
   }
 }
 
+/*
+  Light theme overrides. Declared outside @layer so it always wins the
+  cascade over the @theme (layered) dark defaults, regardless of source
+  order — no need to fight specificity with :root.
+*/
+:root[data-theme='light'] {
+  --color-bg: #f8f8fb;
+  --color-bg-secondary: #efeff5;
+  --color-surface: #ffffff;
+
+  --color-accent: #6d3ff5;
+  --color-accent-2: #9333ea;
+  --color-accent-3: #086c80;
+
+  --color-text: #14141f;
+  --color-text-muted: #55556b;
+  --color-text-dim: #6e6e86;
+
+  --color-border: rgba(20, 20, 40, 0.09);
+  --color-border-strong: rgba(20, 20, 40, 0.16);
+  --color-border-hover: rgba(20, 20, 40, 0.24);
+
+  --color-fill: rgba(20, 20, 40, 0.04);
+  --color-fill-strong: rgba(20, 20, 40, 0.08);
+
+  --color-glass: rgba(255, 255, 255, 0.6);
+  --color-glass-strong: rgba(255, 255, 255, 0.78);
+
+  --color-grid-line: rgba(20, 20, 40, 0.05);
+  --color-shine: rgba(20, 20, 40, 0.08);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -62,6 +106,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    transition: background-color 0.35s ease, color 0.35s ease;
   }
 
   ::selection {
@@ -91,17 +136,19 @@
 
 @layer components {
   .glass {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--color-glass);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--color-border);
+    transition: background-color 0.35s ease, border-color 0.35s ease;
   }
 
   .glass-strong {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--color-glass-strong);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border: 1px solid var(--color-border-strong);
+    transition: background-color 0.35s ease, border-color 0.35s ease;
   }
 
   .text-gradient {

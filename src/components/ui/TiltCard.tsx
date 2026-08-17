@@ -87,7 +87,7 @@ export function TiltCard({ children, className, onHoverChange, shine = true }: T
             className="pointer-events-none absolute inset-y-0 left-0 w-1/4 -skew-x-12"
             style={{
               background:
-                'linear-gradient(to right, transparent, rgba(255,255,255,0.14), transparent)',
+                'linear-gradient(to right, transparent, var(--color-shine), transparent)',
             }}
           />
         )}

@@ -12,7 +12,7 @@ function SkillBar({ name, level, isHovered }: { name: string; level: number; isH
         <span className="text-[var(--color-text)]">{name}</span>
         <span className="text-[var(--color-text-dim)]">{isHovered ? level : 0}%</span>
       </div>
-      <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/5">
+      <div className="h-1.5 w-full overflow-hidden rounded-full bg-[var(--color-fill)]">
         <motion.div
           animate={{ width: isHovered ? `${level}%` : '0%' }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
