@@ -11,7 +11,7 @@ export const site = {
   email: 'mohammedaa232323@gmail.com',
   phone: '+91 7510554336',
   resumeUrl: '/resume.pdf',
-  url: 'https://example.com',
+  url: 'https://mohammedaa-portfolio.vercel.app',
 };
 
 export const navLinks: NavLink[] = [
@@ -23,9 +23,8 @@ export const navLinks: NavLink[] = [
   { label: 'Contact', href: '#contact' },
 ];
 
-// TODO: replace with your real LinkedIn profile URL
 export const socialLinks: SocialLink[] = [
   { label: 'GitHub', href: 'https://github.com/MohammedaaSATCARD', icon: 'github' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/', icon: 'linkedin' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mohammed232323', icon: 'linkedin' },
   { label: 'Email', href: `mailto:${'mohammedaa232323@gmail.com'}`, icon: 'mail' },
 ];
