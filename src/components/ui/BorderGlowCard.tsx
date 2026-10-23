@@ -39,7 +39,7 @@ export function BorderGlowCard({ children, className }: BorderGlowCardProps) {
           pathLength={1}
           strokeDasharray="0.3 0.7"
           animate={{ strokeDashoffset: [0, -1] }}
-          transition={{ duration: 4.5, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'linear' }}
         />
       </svg>
 
