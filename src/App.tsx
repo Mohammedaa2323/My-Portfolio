@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { MotionConfig } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import { AnimatedBackground } from '@/components/layout/AnimatedBackground';
 import { CustomCursor } from '@/components/layout/CustomCursor';
 import { Loader } from '@/components/layout/Loader';
@@ -48,6 +49,7 @@ function App() {
       </main>
 
       <Footer />
+      <Analytics />
     </MotionConfig>
   );
 }
