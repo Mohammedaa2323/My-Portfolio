@@ -60,25 +60,23 @@ function TechSlide({ item, index, progress }: ItemProps) {
   const opacity = useTransform(progress, [start, start + fade, end - fade, end], [0, 1, 1, isLast ? 1 : 0]);
   const scale = useTransform(progress, [start, start + fade, end - fade, end], [0.5, 1, 1, isLast ? 1 : 1.35]);
   const rotate = useTransform(progress, [start, start + fade], [-25, 0]);
-  const blur = useTransform(progress, [start, start + fade, end - fade, end], [12, 0, 0, isLast ? 0 : 12]);
-  const filter = useTransform(blur, (b) => `blur(${b}px)`);
+  // Skip painting slides that are fully faded out.
+  const visibility = useTransform(opacity, (o) => (o > 0.01 ? 'visible' : 'hidden'));
   const Icon = item.icon;
 
+  // Only opacity and transforms animate here: they run on the GPU, unlike blur filters.
   return (
     <motion.div
-      style={{ opacity, scale, filter }}
-      className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center"
+      style={{ opacity, scale, visibility }}
+      className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center will-change-transform"
     >
       <motion.div style={{ rotate }} className="relative">
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 scale-150 rounded-full opacity-40 blur-3xl"
-          style={{ backgroundColor: item.color }}
+          className="absolute -inset-1/2 -z-10 rounded-full opacity-50"
+          style={{ background: `radial-gradient(circle, ${item.color}66 0%, transparent 65%)` }}
         />
-        <Icon
-          className="h-[min(28vw,18vh)] w-[min(28vw,18vh)]"
-          style={{ color: item.color, filter: `drop-shadow(0 0 24px ${item.color}80)` }}
-        />
+        <Icon className="h-[min(28vw,18vh)] w-[min(28vw,18vh)]" style={{ color: item.color }} />
       </motion.div>
       <h3 className="mt-5 text-2xl font-semibold text-[var(--color-text)] md:text-3xl">{item.name}</h3>
       <p className="mt-2 max-w-[16rem] text-sm text-[var(--color-text-muted)] md:max-w-xs">{item.caption}</p>
@@ -100,7 +98,7 @@ function OrbitIcon({ item, index, progress }: ItemProps) {
   return (
     <motion.div
       style={{ left: `${left}%`, top: `${top}%`, opacity, scale }}
-      className="glass absolute flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl md:h-12 md:w-12"
+      className="absolute flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] md:h-12 md:w-12"
       title={item.name}
     >
       <Icon className="h-5 w-5 md:h-6 md:w-6" style={{ color: item.color }} />

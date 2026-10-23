@@ -3,6 +3,7 @@ import { ArrowUp } from 'lucide-react';
 import { site, navLinks } from '@/data/site';
 import { SocialLinks } from '@/components/ui/SocialLinks';
 import { goTo } from '@/hooks/usePathname';
+import { scrollToY } from '@/lib/scroll';
 import profileImage from '@/assets/images/profile.png';
 
 export function Footer() {
@@ -47,7 +48,7 @@ export function Footer() {
       </div>
 
       <motion.button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onClick={() => scrollToY(0)}
         whileHover={{ y: -3 }}
         aria-label="Back to top"
         className="glass absolute -top-6 right-6 flex h-12 w-12 items-center justify-center rounded-full text-[var(--color-text)] shadow-lg cursor-pointer md:right-10"

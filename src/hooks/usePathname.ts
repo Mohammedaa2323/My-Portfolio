@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { scrollToElement } from '@/lib/scroll';
 
 const NAVIGATE_EVENT = 'app:navigate';
 
@@ -18,21 +19,17 @@ export function usePathname() {
   return pathname;
 }
 
-function scrollToHash(hash: string) {
-  document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
-}
-
 /** Navigates to a page path ("/resume") or a home-page section ("#about"). */
 export function goTo(href: string) {
   if (href.startsWith('#')) {
     if (window.location.pathname === '/') {
-      scrollToHash(href);
+      scrollToElement(href);
       return;
     }
     window.history.pushState(null, '', `/${href}`);
     window.dispatchEvent(new Event(NAVIGATE_EVENT));
     // Wait for the home page to render before scrolling to the section.
-    requestAnimationFrame(() => requestAnimationFrame(() => scrollToHash(href)));
+    requestAnimationFrame(() => requestAnimationFrame(() => scrollToElement(href)));
     return;
   }
 
@@ -40,5 +37,5 @@ export function goTo(href: string) {
     window.history.pushState(null, '', href);
     window.dispatchEvent(new Event(NAVIGATE_EVENT));
   }
-  window.scrollTo({ top: 0 });
+  window.scrollTo({ top: 0, behavior: 'instant' });
 }
