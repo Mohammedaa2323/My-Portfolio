@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 import { site, navLinks } from '@/data/site';
 import { SocialLinks } from '@/components/ui/SocialLinks';
+import { goTo } from '@/hooks/usePathname';
 import profileImage from '@/assets/images/profile.png';
 
 export function Footer() {
@@ -24,7 +25,14 @@ export function Footer() {
         <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[var(--color-text-muted)]">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="hover:text-[var(--color-text)]">
+              <a
+                href={link.href.startsWith('#') ? `/${link.href}` : link.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  goTo(link.href);
+                }}
+                className="hover:text-[var(--color-text)]"
+              >
                 {link.label}
               </a>
             </li>

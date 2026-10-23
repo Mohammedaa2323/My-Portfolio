@@ -36,8 +36,13 @@ export interface Project {
   featured?: boolean;
 }
 
-export interface Certification {
+export interface PortfolioDocument {
   title: string;
   issuer: string;
   date: string;
+  kind: 'resume' | 'certificate';
+  format: 'pdf' | 'image';
+  /** Omit to list the document without a preview or download. */
+  file?: string;
+  downloadName?: string;
 }

@@ -1,9 +1,7 @@
 import { motion } from 'framer-motion';
-import { Award, CalendarClock, Layers, Rocket, Sparkles, Target } from 'lucide-react';
+import { CalendarClock, Layers, Rocket, Sparkles, Target } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { GlassCard } from '@/components/ui/GlassCard';
 import { TiltCard } from '@/components/ui/TiltCard';
-import { certifications } from '@/data/certifications';
 import { fadeUp, staggerContainer, viewportOnce } from '@/lib/motion';
 
 const stats = [
@@ -74,33 +72,6 @@ export function About() {
             </TiltCard>
           </motion.div>
         ))}
-      </motion.div>
-
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={viewportOnce}
-        className="mt-8"
-      >
-        <GlassCard hover={false}>
-          <h3 className="mb-4 text-lg font-semibold text-[var(--color-text)]">Certifications</h3>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {certifications.map((cert) => (
-              <div key={cert.title} className="flex items-start gap-3">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--color-fill)] text-[var(--color-accent-3)]">
-                  <Award size={16} />
-                </div>
-                <div>
-                  <div className="text-sm font-medium text-[var(--color-text)]">{cert.title}</div>
-                  <div className="text-xs text-[var(--color-text-dim)]">
-                    {cert.issuer} · {cert.date}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </GlassCard>
       </motion.div>
     </section>
   );

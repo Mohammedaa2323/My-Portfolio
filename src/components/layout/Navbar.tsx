@@ -3,17 +3,21 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { navLinks, site } from '@/data/site';
 import { useActiveSection } from '@/hooks/useActiveSection';
+import { goTo, usePathname } from '@/hooks/usePathname';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { cn } from '@/lib/utils';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const activeId = useActiveSection(navLinks.map((link) => link.href.replace('#', '')));
+  const pathname = usePathname();
+  const sectionId = useActiveSection(
+    navLinks.filter((link) => link.href.startsWith('#')).map((link) => link.href.slice(1)),
+  );
+  const activeId = pathname === '/' ? sectionId : pathname.slice(1);
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: 'smooth' });
+    goTo(href);
   };
 
   return (
@@ -51,7 +55,7 @@ export function Navbar() {
 
         <ul className="hidden xl:flex items-center gap-1">
           {navLinks.map((link) => {
-            const isActive = activeId === link.href.replace('#', '');
+            const isActive = activeId === link.href.replace(/^[#/]/, '');
             return (
               <li key={link.href}>
                 <button

@@ -10,7 +10,7 @@ export const site = {
   location: 'Thrissur, Kerala, India',
   email: 'mohammedaa232323@gmail.com',
   phone: '+91 7510554336',
-  resumeUrl: '/resume.pdf',
+  resumeUrl: '/documents/mohammed-aa-resume.pdf',
   url: 'https://mohammedaa-portfolio.vercel.app',
 };
 
@@ -19,6 +19,7 @@ export const navLinks: NavLink[] = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Resume', href: '/resume' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];

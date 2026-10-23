@@ -11,11 +11,14 @@ import { Skills } from '@/components/sections/Skills';
 import { Experience } from '@/components/sections/Experience';
 import { Projects } from '@/components/sections/Projects';
 import { Contact } from '@/components/sections/Contact';
+import { ResumePage } from '@/pages/ResumePage';
 import { useLoading } from '@/hooks/useLoading';
+import { usePathname } from '@/hooks/usePathname';
 import { site } from '@/data/site';
 
 function App() {
   const isLoading = useLoading();
+  const pathname = usePathname();
 
   return (
     <MotionConfig reducedMotion="user">
@@ -30,12 +33,18 @@ function App() {
       <Navbar />
 
       <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Contact />
+        {pathname === '/resume' ? (
+          <ResumePage />
+        ) : (
+          <>
+            <Hero />
+            <About />
+            <Skills />
+            <Experience />
+            <Projects />
+            <Contact />
+          </>
+        )}
       </main>
 
       <Footer />
