@@ -26,6 +26,7 @@
   /* Glassmorphism surfaces */
   --color-glass: rgba(255, 255, 255, 0.03);
   --color-glass-strong: rgba(255, 255, 255, 0.06);
+  --color-menu-bg: rgba(10, 10, 20, 0.88);
 
   --color-grid-line: rgba(255, 255, 255, 0.04);
   --color-shine: rgba(255, 255, 255, 0.14);
@@ -84,6 +85,7 @@
 
   --color-glass: rgba(255, 255, 255, 0.6);
   --color-glass-strong: rgba(255, 255, 255, 0.78);
+  --color-menu-bg: rgba(255, 255, 255, 0.94);
 
   --color-grid-line: rgba(20, 20, 40, 0.05);
   --color-shine: rgba(20, 20, 40, 0.08);

@@ -102,7 +102,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
-            className="glass-strong mx-auto mt-2 flex max-w-5xl flex-col gap-1 rounded-2xl p-3 xl:hidden"
+            className="glass-strong bg-[var(--color-menu-bg)] mx-auto mt-2 flex max-w-5xl flex-col gap-1 rounded-2xl p-3 xl:hidden"
           >
             {navLinks.map((link) => (
               <button
