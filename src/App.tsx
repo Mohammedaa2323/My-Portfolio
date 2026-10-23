@@ -12,6 +12,7 @@ import { Skills } from '@/components/sections/Skills';
 import { Experience } from '@/components/sections/Experience';
 import { Projects } from '@/components/sections/Projects';
 import { Contact } from '@/components/sections/Contact';
+import { TechShowcase } from '@/components/sections/TechShowcase';
 import { ResumePage } from '@/pages/ResumePage';
 import { useLoading } from '@/hooks/useLoading';
 import { usePathname } from '@/hooks/usePathname';
@@ -44,6 +45,7 @@ function App() {
             <Experience />
             <Projects />
             <Contact />
+            <TechShowcase />
           </>
         )}
       </main>
