@@ -18,7 +18,7 @@ const MUTED = 'text-[var(--color-text-muted)]';
 const CODE_LINES: CodeLine[] = [
   { tokens: [{ text: 'class ', className: KEYWORD }, { text: 'Engineer', className: IDENT }, { text: ':', className: MUTED }] },
   { tokens: [{ text: '    name = ', className: MUTED }, { text: '"Mohammed A A"', className: STRING }] },
-  { tokens: [{ text: '    role = ', className: MUTED }, { text: '"Full-Stack Developer"', className: STRING }] },
+  { tokens: [{ text: '    role = ', className: MUTED }, { text: '"Software Engineer"', className: STRING }] },
   { tokens: [{ text: '    stack = [', className: MUTED }] },
   { tokens: [{ text: '        ', className: MUTED }, { text: '"Python", "Django", "FastAPI", "AWS",', className: STRING }] },
   { tokens: [{ text: '    ]', className: MUTED }] },

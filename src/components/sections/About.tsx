@@ -18,7 +18,7 @@ export function About() {
       <SectionHeading
         eyebrow="About Me"
         title="Building reliable software with clean, scalable architecture"
-        description="I'm a full-stack engineer who partners product ambition with production-grade backend engineering — from microservices and cloud infrastructure to AI-powered features that ship."
+        description="I'm a software engineer who partners product ambition with production-grade backend engineering — from microservices and cloud infrastructure to AI-powered features that ship."
       />
 
       <motion.div

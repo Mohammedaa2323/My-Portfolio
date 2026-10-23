@@ -7,7 +7,7 @@ import { RotatingWord } from '@/components/ui/RotatingWord';
 import { SocialLinks } from '@/components/ui/SocialLinks';
 import { staggerContainer, fadeUp, wordUp } from '@/lib/motion';
 
-const HEADLINE_WORDS = ['Full-Stack', 'Engineer', 'Building'];
+const HEADLINE_WORDS = ['Software', 'Engineer', 'Building'];
 const ROTATING_ACCENTS = [
   'Ideas into Reality',
   'Intelligent Systems',
@@ -86,7 +86,7 @@ export function Hero() {
 
           <motion.h1
             variants={staggerContainer(0.07, 0)}
-            aria-label={`Full-Stack Engineer Building ${ROTATING_ACCENTS.join(', ')}`}
+            aria-label={`Software Engineer Building ${ROTATING_ACCENTS.join(', ')}`}
             className="max-w-xl font-semibold tracking-tight text-[var(--color-text)]"
           >
             <span aria-hidden="true">

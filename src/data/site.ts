@@ -2,7 +2,7 @@ import type { NavLink, SocialLink } from '@/types';
 
 export const site = {
   name: 'Mohammed A A',
-  role: 'Full-Stack Software Engineer',
+  role: 'Software Engineer',
   tagline:
     'I design and build scalable, production-grade applications with clean architecture and AI-powered solutions.',
   description:
